@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import LeaveLastCoin from './lastDieGame'
 
 function Square(props) {
     return (
@@ -41,11 +42,9 @@ class Board extends React.Component {
             </div>
         );
     }
-
-
 }
 
-class Game extends React.Component {
+class GameXO extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -53,8 +52,8 @@ class Game extends React.Component {
             xIsNext: true,
             stepNumber: 0
         };
-
     }
+
     render() {
         const history = this.state.history;
         const current = history[this.state.stepNumber];
@@ -78,18 +77,26 @@ class Game extends React.Component {
         } else {
             status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
         }
+
         return (
-            <div className="game">
-                <div className="game-board">
-                    <Board
-                        squareStuff={current.squares}
-                        onClick={i => this.handleClick(i)}
-                    />
+            <div>
+                <div className="game">
+                    <div className="game-board">
+                        <Board
+                            squareStuff={current.squares}
+                            onClick={i => this.handleClick(i)}
+                        />
+                    </div>
+                    <div className="game-info">
+                        <div>{status}</div>
+                        <ol>{moves}</ol>
+                    </div>
                 </div>
-                <div className="game-info">
-                    <div>{status}</div>
-                    <ol>{moves}</ol>
-                </div>
+                <button className="switch-games" onClick={()=>{
+                    start(<LeaveLastCoin/>);
+                }}>
+                    'Поиграйка в это, дружок!'
+                </button>
             </div>
         );
     }
@@ -122,10 +129,14 @@ class Game extends React.Component {
 
 // ========================================
 
-ReactDOM.render(
-    <Game/>,
-    document.getElementById('root')
-);
+function start(componentR) {
+    ReactDOM.render(
+        componentR,
+        document.getElementById('root')
+    );
+}
+
+start(<GameXO/>);
 
 function calculateWinner(squares) {
     const lines = [

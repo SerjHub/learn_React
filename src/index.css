@@ -48,3 +48,69 @@ ol, ul {
 .game-info {
   margin-left: 20px;
 }
+
+.switch-games {
+  margin: 18px;
+  border-radius: 3px;
+  padding: 4px;
+  color: white;
+  background: orange;
+  border: 1px solid white;
+}
+.switch-games:hover{
+  border: 1px solid black;
+  cursor: pointer;
+  color: black;
+}
+
+.game-laslos {
+  display: flex;
+}
+
+.div-btns-game {
+  display: flex;
+  flex-direction: column;
+  height: auto;
+}
+
+.action-list {
+  list-style-type: none;
+}
+
+.btn-game {
+  width: 240px;
+  border: none;
+  background: white;
+  margin: 4px;
+  padding: 8px;
+  outline: none;
+
+  box-shadow: 0 1px 2px rgba(0,0,0,0.15);
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.btn-game:hover {
+  box-shadow: 0 5px 10px rgba(0,0,0,0.3);
+  background: #61dafb;
+}
+
+/*.btn-game::after {*/
+/*  box-shadow: 0 5px 15px rgba(0,0,0,0.3);*/
+/*  opacity: 0;*/
+/*  transition: opacity 0.3s ease-in-out;*/
+/*}*/
+
+/*.btn-game::after:hover {*/
+/*  opacity: 1;*/
+/*}*/
+
+.score-sign {
+  width: 64px;
+  text-align: center;
+  font-size: 24px;
+
+}
+
+.opponent-status {
+  font-size: 24px;
+}
